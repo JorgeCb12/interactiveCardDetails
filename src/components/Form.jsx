@@ -1,22 +1,24 @@
-import { useState } from 'react'
-
-const Form = () => {
-  const [cardNumber, setCardNumber] = useState('')
-  const [cardHolder, setCardHolder] = useState('')
-  const [cardExpDateYear, setCardExpDateYear] = useState('')
-  const [cardExpDateMonth, setCardExpDateMonth] = useState('')
-  const [cardCvc, setCardCvc] = useState('')
-
+const Form = ({
+  cardNumber,
+  setCardNumber,
+  cardHolder,
+  setCardHolder,
+  cardExpDateYear,
+  setCardExpDateYear,
+  cardExpDateMonth,
+  setCardExpDateMonth,
+  cardCvc,
+  setCardCvc,
+}) => {
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(
-      cardNumber,
-      cardHolder,
-      cardExpDateYear,
-      cardExpDateMonth,
-      cardCvc,
-    )
-  }
+    e.preventDefault();
+  };
+  const handleChange = (e) => {
+    let value = e.target.value.replace(/\D/g, "");
+    if (value.length > 16) return;
+    value = value.replace(/(.{4})(?=\d)/g, "$1 ").trim();
+    setCardNumber(value);
+  };
 
   return (
     <div className="flex items-center justify-center max-w-80">
@@ -26,7 +28,7 @@ const Form = () => {
         onSubmit={handleSubmit}
       >
         <div className="flex flex-col gap-2">
-          <label className="font-semibold" htmlFor="">
+          <label className="font-semibold " htmlFor="">
             Cardholder Name
           </label>
           <input
@@ -34,7 +36,7 @@ const Form = () => {
             placeholder="e.g. Jane Appleseed"
             value={cardHolder}
             onChange={(e) => setCardHolder(e.target.value)}
-            className="w-full border border-gray-400 font-semibold focus:outline-none rounded-md p-2"
+            className="w-full border border-gray-400 font-[Poppins] focus:outline-none rounded-md p-2"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -42,17 +44,17 @@ const Form = () => {
             Cardholder Number
           </label>
           <input
-            type="number"
+            type="text"
             value={cardNumber}
-            onChange={(e) => setCardNumber(e.target.value)}
+            onChange={handleChange}
             placeholder="e.g. 1234 5678 9012 3456"
-            className="w-full border border-gray-400 font-semibold focus:outline-none rounded-md p-2"
+            className="w-full border border-gray-400 font-[Poppins] focus:outline-none rounded-md p-2"
           />
         </div>
         <div>
           <div className="flex flex-row gap-4">
             <div className="flex flex-col gap-2">
-              <label className="font-semibold" htmlFor="">
+              <label className="font-semibold " htmlFor="">
                 EXP. DATE (MM/YY)
               </label>
               <div className="flex flex-row gap-2">
@@ -61,14 +63,14 @@ const Form = () => {
                   placeholder="MM"
                   value={cardExpDateMonth}
                   onChange={(e) => setCardExpDateMonth(e.target.value)}
-                  className="w-full border font-semibold border-gray-400 focus:outline-none rounded-md p-2 max-w-30"
+                  className="w-full border font-[Poppins]  border-gray-400 focus:outline-none rounded-md p-2 max-w-30"
                 />
                 <input
                   type="number"
                   placeholder="YY"
                   value={cardExpDateYear}
                   onChange={(e) => setCardExpDateYear(e.target.value)}
-                  className="w-full border font-semibold border-gray-400 focus:outline-none rounded-md p-2 max-w-30"
+                  className="w-full border font-[Poppins] border-gray-400 focus:outline-none rounded-md p-2 max-w-30"
                 />
               </div>
             </div>
@@ -81,7 +83,7 @@ const Form = () => {
                 value={cardCvc}
                 onChange={(e) => setCardCvc(e.target.value)}
                 placeholder="e.g. 123"
-                className="w-full border font-semibold border-gray-400 focus:outline-none rounded-md p-2"
+                className="w-full border font-[Poppins] border-gray-400 focus:outline-none rounded-md p-2"
               />
             </div>
           </div>
@@ -93,7 +95,7 @@ const Form = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Form
+export default Form;
