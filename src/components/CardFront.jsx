@@ -3,7 +3,7 @@ import cardFrontImg from "../assets/images/bg-card-front.png";
 const CardFront = ({ className = "" }) => {
   return (
     <div
-      className={`relative mr-20 -mt-24 z-10 w-[18rem] sm:w-[20rem] lg:-mt-10 lg:ml-16 lg:w-88 ${className}`}
+      className={`relative z-10 -mt-18 ml-2 w-[18rem] sm:w-[20rem] sm:-mt-20 sm:ml-0 md:mt-0 md:-ml-12 md:w-70 self-start lg:self-auto lg:mt-4 lg:w-88 ${className}`}
     >
       <img src={cardFrontImg} alt="Card front" className="w-full h-auto" />
       <div className="absolute inset-0 size-8 top-1/12 left-1/12 bg-white rounded-full"></div>

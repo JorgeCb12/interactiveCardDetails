@@ -6,8 +6,8 @@ import Form from "./components/Form";
 
 function App() {
   return (
-    <main className="min-h-screen font-[Space_Grotesk] grid grid-rows-[18rem_1fr] lg:grid-rows-1 lg:grid-cols-[28rem_1fr]">
-      <section className="relative z-20">
+    <main className="min-h-screen font-[Space_Grotesk] grid grid-rows-[18rem_1fr] md:grid-rows-1 md:grid-cols-[20rem_1fr] lg:grid-cols-[28rem_1fr]">
+      <section className="relative z-20 sm:px-20 md:p-0  lg:p-0">
         <div className="absolute inset-0 overflow-hidden">
           <img
             src={bgMainMobile}
@@ -19,9 +19,9 @@ function App() {
           />
         </div>
 
-        <div className="relative h-full flex flex-col items-center justify-center gap-6 px-6 py-8 lg:items-start lg:px-12 lg:translate-x-16">
-          <CardBack className="order-1 lg:order-2" />
-          <CardFront className="order-2 lg:order-1" />
+        <div className="relative w-full max-w-[340px] mx-auto h-full flex flex-col items-center justify-center md:items-start md:px-12 md:translate-x-16">
+          <CardBack className="order-1 md:order-2" />
+          <CardFront className="order-2 md:order-1" />
         </div>
       </section>
 
