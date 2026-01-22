@@ -174,10 +174,7 @@ const Form = ({
               </div>
 
               <div className="flex flex-col gap-2">
-                <label
-                  className="font-semibold text-sm lg:text-base"
-                  htmlFor=""
-                >
+                <label className="font-semibold text-sm lg:text-sm" htmlFor="">
                   CVC
                 </label>
                 <input
