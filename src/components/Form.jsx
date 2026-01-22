@@ -48,21 +48,22 @@ const Form = ({
       showError("cardHolder", "Wrong format, letters only.");
       return;
     }
-
-    setCardHolder(value.replace(/[^a-zA-Z ]/g, ""));
+    setCardHolder(value);
   };
 
   const handleNumber = (e) => {
     const rawValue = e.target.value;
 
-    if (/\D/.test(rawValue)) {
+    if (/[^0-9\s]/.test(rawValue)) {
       showError("cardNumber", "Wrong format, numbers only.");
+      return;
     }
-
     const value = rawValue.replace(/\D/g, "");
+
     if (value.length > 16) return;
 
     const formatted = value.replace(/(.{4})(?=\d)/g, "$1 ").trim();
+
     setCardNumber(formatted);
   };
 
@@ -97,11 +98,17 @@ const Form = ({
   return (
     <>
       {isSubmitted ? (
-        <CardConfirm />
+        <CardConfirm
+          setIsSubmitted={setIsSubmitted}
+          setCardHolder={setCardHolder}
+          setCardNumber={setCardNumber}
+          setCardExpDateMonth={setCardExpDateMonth}
+          setCardExpDateYear={setCardExpDateYear}
+          setCardCvc={setCardCvc}
+        />
       ) : (
         <div className="flex items-center justify-center max-w-80">
           <form className="w-full flex flex-col gap-4" onSubmit={handleSubmit}>
-            {/* Cardholder */}
             <div className="flex flex-col gap-2">
               <label className="font-semibold">Cardholder Name</label>
               <input
@@ -119,7 +126,6 @@ const Form = ({
               )}
             </div>
 
-            {/* Card Number */}
             <div className="flex flex-col gap-2">
               <label className="font-semibold">Card Number</label>
               <input
